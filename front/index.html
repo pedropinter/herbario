@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herbário Épico - Cadastro</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+        <img src="img/89971f12-542e-42c8-9e01-140493c96015.png" alt="Herbário Épico" width="8%">
+
+      <div class="profile-icon"></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="sobre" class="sobre-nos">
+        <div class="conteudo-sobre">
+          <div class="texto">
+            <h2>Bem-Vindo ao Herbário Épico</h2>
+            <p>
+              Nosso herbário digital é um espaço dedicado ao estudo, catalogação e valorização da flora.
+              Aqui você pode explorar uma coleção de plantas com descrições, imagens, curiosidades e dados
+              científicos, além de contribuir para a preservação da biodiversidade.
+            </p>
+            <p>
+              Além de consultar o catálogo já disponível, você também pode cadastrar novas espécies:
+              insira informações como nome científico, popular, características, habitat e imagens.
+              Dessa forma, o herbário se torna colaborativo, reunindo conhecimento produzido por
+              estudantes, pesquisadores e entusiastas da natureza.
+            </p>
+      
+            <div class="botoes">
+              <button onclick="rolarPara('formulario')" class="btn btn-success">Cadastrar planta</button>
+              <button onclick="rolarPara('catalogo')" class="btn btn-success">Ver Herbário Épico</button>
+            </div>
+          </div>
+      
+          <div class="logo-sobre">
+            <img src="img/89971f12-542e-42c8-9e01-140493c96015.png" alt="Herbário Épico">
+          </div>
+        </div>
+      </section>
+    <section id="formulario" class="form-container">
+        <h2>Cadastrar Planta:</h2>
+        <form id="formCadastro">
+          <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+          </div>
+      
+          <div class="form-group">
+            <label for="nome-cientifico">Nome científico:</label>
+            <input type="text" id="cientifico" required>
+          </div>
+      
+          <div class="form-group">
+            <label for="familia">Família:</label>
+            <input type="text" id="familia" required>
+          </div>
+      
+          <div class="form-group">
+            <label for="origem">Origem:</label>
+            <input type="text" id="origem" required>
+          </div>
+      
+          <div class="form-group">
+            <label for="usos">Usos medicinais:</label>
+            <input type="text" id="usos">
+          </div>
+      
+          <div class="form-group">
+            <label for="principios">Princípios ativos:</label>
+            <input type="text" id="principios">
+          </div>
+      
+          <div class="form-group">
+            <label for="parte">Parte utilizada:</label>
+            <input type="text" id="parte">
+          </div>
+      
+          <div class="form-group">
+            <label for="preparo">Modo de preparo:</label>
+            <input type="text" id="preparo">
+          </div>
+      
+          <div class="form-group">
+            <label for="contra">Contraindicações:</label>
+            <input type="text" id="contra">
+          </div>
+      
+          <div class="form-group">
+            <label for="imagem">Imagem (URL):</label>
+            <input type="text" id="imagem" placeholder="https://link-da-imagem.com">
+          </div>
+      
+          <button type="submit" class="btn-cadastrar">Cadastrar</button>
+        </form>
+      </section>
+      
+
+ 
+    <div id="catalogo" class="container mt-4">
+        <div class="row"></div>
+      </div>
+      
+      <div class="modal fade" id="modalEvento" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitulo">Plantas</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body" id="modalCorpo"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="modalBotaoAcao">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <script src="script.js"></script>
+      
+  </main>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
