@@ -1,36 +1,46 @@
 // Enviar formulário via POST
 document.getElementById("formCadastro").addEventListener("submit", async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const nome = document.getElementById("nome").value;
-    const cientifico = document.getElementById("cientifico").value;
-    const familia = document.getElementById("familia").value;
-    const origem = document.getElementById("origem").value;
-    const usos = document.getElementById("usos").value;
-    const principios = document.getElementById("principios").value;
-    const parte = document.getElementById("parte").value;
-    const preparo = document.getElementById("preparo").value;
-    const contra = document.getElementById("contra").value;
-    const imagem = document.getElementById("imagem").value;
+  const formData = new FormData();
+  formData.append("nome", document.getElementById("nome").value);
+  formData.append("cientifico", document.getElementById("cientifico").value);
+  formData.append("familia", document.getElementById("familia").value);
+  formData.append("origem", document.getElementById("origem").value);
+  formData.append("usos", document.getElementById("usos").value);
+  formData.append("principios", document.getElementById("principios").value);
+  formData.append("parte", document.getElementById("parte").value);
+  formData.append("preparo", document.getElementById("preparo").value);
+  formData.append("contra", document.getElementById("contra").value);
+  
+  const imagem = document.getElementById("imagem").files[0];
+  if (imagem) formData.append("imagem", imagem);
 
-
-
-    const resp = await fetch("http://localhost:3000/usuarios", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nome, cientifico, familia, origem,usos,principios,parte,preparo,contra,imagem })
+  try {
+    const resp = await fetch("http://localhost:3000/plantas", {
+      method: "POST",
+      body: formData
     });
 
     const data = await resp.json();
-    alert("Planta cadastrado: " + data.nome);
-    carregarPlantas();
-});
 
+    if (resp.ok) {
+      alert("Planta cadastrada: " + data.nome);
+      carregarPlantas();
+      document.getElementById("formCadastro").reset();
+    } else {
+      alert(data.erro || "Erro ao cadastrar planta");
+    }
+  } catch (err) {
+    console.error("Erro no fetch:", err);
+    alert("Erro ao enviar dados ao servidor.");
+  }
+});
 
 
 async function carregarPlantas() {
     try {
-      const res = await fetch(`http://localhost:3000/usuarios`);
+      const res = await fetch(`http://localhost:3000/plantas`);
       if (!res.ok) throw new Error("Erro ao carregar plantas");
   
       const plantas = await res.json();
