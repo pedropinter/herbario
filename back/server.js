@@ -10,9 +10,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // 🔹 pasta pública para imagens
+app.use("/uploads", express.static(path.join(__dirname, "uploads"))); 
 
-// Configuração do multer (armazenar na pasta "uploads")
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "uploads/"),
   filename: (req, file, cb) => {
@@ -24,7 +23,6 @@ const upload = multer({ storage });
 
 const JWT_SECRET = "1234";
 
-// Rota para cadastro de usuário (POST /cadastro)
 app.post("/cadastro", (req, res) => {
   const { nome, email, senha } = req.body;
 
@@ -51,7 +49,6 @@ app.post("/cadastro", (req, res) => {
   });
 });
 
-// Rota de login (POST /login)
 app.post("/login", (req, res) => {
   const { email, senha } = req.body;
 
@@ -95,7 +92,6 @@ app.post("/login", (req, res) => {
 });
 
 
-// Rota GET: listar usuários
 app.get("/plantas", (req, res) => {
     db.query("SELECT id, nome, cientifico, familia, origem,usos,principios,parte,preparo,contra,imagem FROM registro", (err, results) => {
         if (err) {
@@ -106,7 +102,6 @@ app.get("/plantas", (req, res) => {
         }
     });
 });
-// Rota POST: criar usuário
 app.post("/plantas", upload.single("imagem"), (req, res) => {
   const { nome, cientifico, familia, origem, usos, principios, parte, preparo, contra } = req.body;
   const imagem = req.file ? `/uploads/${req.file.filename}` : null;

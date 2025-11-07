@@ -77,7 +77,6 @@ async function carregarPlantas() {
         row.appendChild(col);
       });
   
-      // Listeners dos botões "Mais Informações"
       document.querySelectorAll(".btn-mais").forEach(btn => {
         btn.addEventListener("click", async () => {
           const id = btn.dataset.id;
@@ -97,7 +96,6 @@ async function carregarPlantas() {
               <p><strong>Contraindicações:</strong> ${planta.contra}</p>
             `;
   
-            // Aqui você pode adicionar ações extras no botão
             const botao = document.getElementById("modalBotaoAcao");
             botao.innerText = "Fechar";
             botao.classList.remove("btn-success", "btn-danger");
